@@ -87,12 +87,12 @@ def ingest(dataset, array_path, ctx):
     return array_path
 
 def main():
-  if len(sys.argv) != 2:
-    print("usage:", sys.argv[0], "CSV_FILE")
+  if len(sys.argv) != 3:
+    print("usage:", sys.argv[0], "CSV_FILE", "ARRAY_DIR")
     exit(1)
 
   dataset = sys.argv[1]
-  array_path = "tpc_array"
+  array_path = sys.argv[2]
 
   config = {
       'py.alloc_max_bytes': str(12 * pow(1024, 3)), #64GB,
