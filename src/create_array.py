@@ -55,7 +55,6 @@ def ingest(dataset, array_path, ctx):
       "ignore": np.uint64
     }
 
-    start = time.time()
     tiledb.from_csv(
       array_path,
       dataset,
@@ -81,10 +80,6 @@ def ingest(dataset, array_path, ctx):
       names = list(columns.keys()),
       dim_filters = tiledb.FilterList([tiledb.ZstdFilter(level=-1)]),
       attr_filters = tiledb.FilterList([tiledb.ZstdFilter(level=-1)]))
-    duration = time.time() - start
-    print(f"Duration: {duration}s")
-
-    return array_path
 
 def main():
   if len(sys.argv) != 3:

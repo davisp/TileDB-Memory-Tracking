@@ -65,7 +65,10 @@ def main():
   print_cols(cols)
   with open(sys.argv[1]) as handle:
     for line in handle:
-      data = json.loads(line)
+      try:
+        data = json.loads(line)
+      except:
+        print("Invalid JSON:", line)
       print_row(cols, data)
 
 
