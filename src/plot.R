@@ -8,17 +8,11 @@ suppressMessages({
 
 
 genPlot <- function(data, name, title, color) {
-    plot <- ggplot(data, aes(x = timestamp)) +
-        geom_line(aes(y = .data[[name]]), size = 0.3, color = color, show.legend = FALSE) +
-        scale_x_continuous("Elapsed Time [sec]") +
-        scale_y_continuous("RAM Usage", labels = label_bytes(units = "MB"),
-            limits = c(0, 2.5e+09)) +
-        theme(
-            plot.title = element_text(size = 8, color = color, hjust = 0.5),
-            axis.title = element_text(size = 5,face = "bold"),
-            axis.text = element_text(size = 5)
-        ) +
-        ggtitle(title)
+    plot <- ggplot(data, aes(x = timestamp)) + geom_line(aes(y = .data[[name]]),
+        size = 0.3, color = color, show.legend = FALSE) + scale_x_continuous("Elapsed Time [sec]") +
+        scale_y_continuous("RAM Usage", labels = label_bytes(units = "MB"), limits = c(0,
+            2.5e+09)) + theme(plot.title = element_text(size = 8, hjust = 0.5), axis.title = element_text(size = 5,
+        face = "bold"), axis.text = element_text(size = 5)) + ggtitle(title)
     return(plot)
 }
 
